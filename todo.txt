@@ -1,5 +1,5 @@
 create blog -> blog schema -> mongo db
-all blogs -> view button -> redirect to all view blogs
+all blogs -> view button -> redirect to all view blogs of a person - done
 view blog ->edit, delete button  (in my blogs only) ->redirect edit to same blog and delete to my blogs
 edit blog
 delete blog
@@ -13,12 +13,18 @@ all blogs on home
 
 my blogs only - edit, delete - done
 
-person wise blog - link (clickable) redirects to all his blogs (separate page /user/:id)
+person wise blog - link (clickable) redirects to all his blogs (separate page /user/:id) - done
 
-all blogs -> like/comment there (need signup/login)
+all blogs -> like/comment there (need signup/login) - done
 
 add a search bar -> author /content
 
 improve frontend -> react watch (join both)
 
 bycrypt hashing
+
+
+problem : 
+cast object id - routes separation etc
+mongoose -> user naming
+populate??

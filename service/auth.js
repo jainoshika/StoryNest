@@ -4,7 +4,7 @@ const secret = "qwerty123";
 //create token
 function setUser(user) {
     return jwt.sign({ _id: user._id, role: user.role },
-     secret);
+    process.env.JWT_SECRET);
 }
 
 //verify token received from user during each request

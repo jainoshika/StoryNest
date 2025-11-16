@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - StoryNest</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-container">
+            <a href="/" class="logo">StoryNest</a>
+        </div>
+    </div>
+
+    <!-- Signup Container -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1 class="auth-title">Join StoryNest.</h1>
+            
+            <form action="/signup" method="post" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Enter your name" 
+                        class="form-input"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        name="email" 
+                        class="form-input"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input 
+                        type="password" 
+                        placeholder="Enter your password" 
+                        name="password" 
+                        class="form-input"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-auth">Sign Up</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login" class="auth-link">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

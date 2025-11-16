@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-container">
+            <a href="/" class="logo">StoryNest</a>
+            <div class="header-right">
+                <a href="/blogs/new" class="btn btn-write">Write</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <% if (blog && user) { %>
+    <article class="article-container">
+        <!-- Article Header -->
+        <div class="article-header">
+            <h1 class="article-title"><%= blog.title %></h1>
+            
+            <div class="article-meta">
+                <div class="author-info">
+                    <a href="/user/<%= blog.createdBy%>" class="author-name"><%= blog.author %></a>
+                    <div class="article-dates">
+                        <span><%= new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+                        <span class="separator">·</span>
+                        <span>Updated <%= new Date(blog.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="article-actions">
+                <form action="/blogs/like/<%= blog._id %>" method="POST" class="like-form">
+                    <button class="btn-like">
+                        <% if (blog.likes.includes(user._id)) { %>
+                            <span class="icon">❤️</span> <span class="like-count"><%= blog.likes.length %></span>
+                        <% } else { %>
+                            <span class="icon">🤍</span> <span class="like-count"><%= blog.likes.length %></span>
+                        <% } %>
+                    </button>
+                </form>
+
+                <% if (blog && user && blog.createdBy.toString() === user._id.toString()) { %>
+                <div class="author-actions">
+                    <a href="/blogs/edit/<%= blog._id %>" class="btn-edit">Edit</a>
+                    <form action="/blogs/delete/<%= blog._id %>" method="post" class="delete-form">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+            <p><%= blog.content %></p>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+            <h3 class="comments-title">Responses (<%= blog.comments.length %>)</h3>
+
+            <form action="/blogs/comment/<%= blog._id %>" method="POST" class="comment-form">
+                <textarea name="text" placeholder="What are your thoughts?" required class="comment-input"></textarea>
+                <button class="btn-comment">Respond</button>
+            </form>
+
+            <div class="comments-list">
+                <% blog.comments.forEach(c => { %>
+                    <div class="comment">
+                        <div class="comment-author"><%= c.user.name %></div>
+                        <div class="comment-date"><%= new Date(c.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></div>
+                        <div class="comment-text"><%= c.text %></div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </article>
+    <% } %>
+</body>
+</html>

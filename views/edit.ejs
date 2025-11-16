@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-container">
+            <a href="/" class="logo">StoryNest</a>
+            <div class="header-right">
+                <a href="/" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Form Container -->
+    <% if (locals.blog) { %>
+    <div class="form-container">
+        <h1 class="form-title">Edit Story</h1>
+        
+        <form action="/blogs/edit/<%= blog._id %>" method="post" class="blog-form">
+            <div class="form-group">
+                <label class="form-label">Title</label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    value="<%- blog.title %>" 
+                    class="form-input form-input-title"
+                    placeholder="Title"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Content</label>
+                <textarea 
+                    name="content" 
+                    class="form-textarea"
+                    placeholder="Tell your story..."
+                    required
+                ><%- blog.content %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Author</label>
+                <input 
+                    type="text" 
+                    name="author" 
+                    value="<%- blog.author %>" 
+                    class="form-input"
+                    placeholder="Author name"
+                    required
+                >
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-publish">Save Changes</button>
+                <a href="/blogs/<%= blog._id %>" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <% } %>
+</body>
+</html>

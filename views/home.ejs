@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Home</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-container">
+            <div class="logo">StoryNest</div>
+            <div class="header-right">
+                <form action="/blogs/search" method="GET" class="search-form">
+                    <input 
+                        type="text" 
+                        name="q" 
+                        placeholder="Search" 
+                        class="search-input"
+                        required
+                    >
+                    <button type="submit" class="btn btn-search">Search</button>
+                </form>
+                <a href="/blogs/new" class="btn btn-write">Write</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <% if (blogs && blogs.length > 0 && user) { %>
+            <div class="blogs-grid">
+                <% blogs.forEach((blog) => { %>
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <div class="blog-author">
+                                <a href="/user/<%=blog.createdBy%>"><%= blog.author %></a>
+                            </div>
+                            <h2 class="blog-title">
+                                <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                            </h2>
+                            <p class="blog-excerpt"><%= blog.content %></p>
+                            <div class="blog-meta">
+                                <span><%= new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+                                <span>·</span>
+                                <span>Updated <%= new Date(blog.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="empty-state">
+                <h2>No stories yet</h2>
+                <p>Start writing and sharing your ideas with the world.</p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+create blog -> blog schema -> mongo db
+all blogs -> view button -> redirect to all view blogs
+view blog ->edit, delete button  (in my blogs only) ->redirect edit to same blog and delete to my blogs
+edit blog
+delete blog
+
+auth -
+    user model
+    signup
+    login
+all blogs on home
+
+
+my blogs only - edit, delete - done
+
+person wise blog - link (clickable) redirects to all his blogs (separate page /user/:id)
+
+all blogs -> like/comment there (need signup/login)
+
+add a search bar -> author /content
+
+improve frontend -> react watch (join both)
+
+bycrypt hashing

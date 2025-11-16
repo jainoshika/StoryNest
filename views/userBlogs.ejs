@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Blogs</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-container">
+      <a href="/" class="logo">StoryNest</a>
+      <div class="header-right">
+        <a href="/blogs/new" class="btn btn-write">Write</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Profile Container -->
+  <div class="profile-container">
+    <div class="profile-header">
+      <h1 class="profile-title">
+        <% if (blogs && blogs.length > 0) { %>
+          <%= blogs[0].author %>
+        <% } else { %>
+          User Profile
+        <% } %>
+      </h1>
+      <p class="profile-subtitle">
+        <% if (blogs && blogs.length > 0) { %>
+          <%= blogs.length %> <%= blogs.length === 1 ? 'story' : 'stories' %>
+        <% } else { %>
+          No stories yet
+        <% } %>
+      </p>
+    </div>
+
+    <% if (!blogs || blogs.length === 0) { %>
+      <div class="empty-state">
+        <h2>No stories published yet</h2>
+        <p>This user hasn't shared any stories.</p>
+      </div>
+    <% } else { %>
+      <div class="blogs-grid">
+        <% blogs.forEach(blog => { %>
+          <div class="blog-card">
+            <div class="blog-content">
+              <h2 class="blog-title">
+                <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              </h2>
+              <p class="blog-excerpt"><%= blog.content.substring(0, 150) %>...</p>
+              
+              <div class="blog-meta">
+                <span><%= new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+                <span>·</span>
+                <span>Updated <%= new Date(blog.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+              </div>
+
+              <!-- Edit/Delete visible only if logged-in user owns this blog -->
+              <% if (blog.createdBy && user && blog.createdBy.toString() === user._id.toString()) { %>
+                <div class="blog-actions">
+                  <a href="/blogs/edit/<%= blog._id %>" class="btn-edit">Edit</a>
+                  <form action="/blogs/delete/<%= blog._id %>" method="POST" class="delete-form">
+                    <button type="submit" class="btn-delete">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

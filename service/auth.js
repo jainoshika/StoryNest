@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const secret = "qwerty123";
 
 //create token
 function setUser(user) {
@@ -11,7 +10,7 @@ function setUser(user) {
 function  getUser(token){
     if (!token) return null;
     try {
-        return jwt.verify(token, secret); // returns decoded payload
+        return jwt.verify(token, process.env.JWT_SECRET); // returns decoded payload
     }
     catch  {
         return null;

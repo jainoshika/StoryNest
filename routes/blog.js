@@ -4,17 +4,17 @@ const {handleCreateNewBlog, handleAllBlogs, handleDeleteBlog, handleEditBlog, ha
     handleUpdateBlog, handleBlogComments, handleBlogLike, handleSearchBlog} = require("../controllers/blog");
 
 router
-    .get("/new", (req,res) => { // opens new blog page
+    .get("/", handleAllBlogs)
+    .get("/new", restrictTo(['NORMAL']), (req,res) => { // opens new blog page
         res.render("newblog");
     })
     .get("/search", handleSearchBlog)
-    .post("/new", handleCreateNewBlog)
-    .post("/like/:id", handleBlogLike)
-    .post("/comment/:id", handleBlogComments)
+    .post("/new", restrictTo(['NORMAL']),handleCreateNewBlog)
+    .post("/like/:id",restrictTo(['NORMAL']),  handleBlogLike)
+    .post("/comment/:id", restrictTo(['NORMAL']), handleBlogComments)
     .get("/edit/:id", handleEditBlog)
-    .post("/edit/:id", handleUpdateBlog)
-    .post("/delete/:id", handleDeleteBlog)
-    .get("/", handleAllBlogs)
+    .post("/edit/:id", restrictTo(['NORMAL']), handleUpdateBlog)
+    .post("/delete/:id", restrictTo(['NORMAL']), handleDeleteBlog)
     .get("/:id", handleViewBlog)
     
 

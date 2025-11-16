@@ -30,14 +30,14 @@ app.use(checkForAuthentication);
 //routes
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.get("/", (req, res) => {
-  res.redirect("/blogs");
+  res.redirect("/blogs/");
 });
 const blogRoutes = require("./routes/blog")
 const userRoutes = require("./routes/user")
 const publicRoutes = require("./routes/publicRoutes")
 const staticRoutes = require("./routes/staticRoutes")
 
-app.use("/blogs", restrictTo(['NORMAL']), blogRoutes);
+app.use("/blogs", blogRoutes);
 app.use("/user", userRoutes);
 app.use("/", publicRoutes);
 app.use("/", staticRoutes);

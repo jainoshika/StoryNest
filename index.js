@@ -29,6 +29,9 @@ app.use(checkForAuthentication);
 
 //routes
 app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get("/", (req, res) => {
+  res.redirect("/blogs");
+});
 const blogRoutes = require("./routes/blog")
 const userRoutes = require("./routes/user")
 const publicRoutes = require("./routes/publicRoutes")

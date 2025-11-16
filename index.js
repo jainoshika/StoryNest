@@ -34,12 +34,10 @@ app.get("/", (req, res) => {
 });
 const blogRoutes = require("./routes/blog")
 const userRoutes = require("./routes/user")
-const publicRoutes = require("./routes/publicRoutes")
 const staticRoutes = require("./routes/staticRoutes")
 
 app.use("/blogs", blogRoutes);
 app.use("/user", userRoutes);
-app.use("/", publicRoutes);
 app.use("/", staticRoutes);
 app.use("/", userRoutes);
 

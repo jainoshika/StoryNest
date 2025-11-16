@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {restrictTo} = require("../middlewares/auth")
 const {handleCreateNewBlog, handleAllBlogs, handleDeleteBlog, handleEditBlog, handleViewBlog, 
     handleUpdateBlog, handleBlogComments, handleBlogLike, handleSearchBlog} = require("../controllers/blog");
 

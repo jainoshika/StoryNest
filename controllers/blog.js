@@ -15,18 +15,15 @@ async function handleViewBlog(req, res) {
 async function handleAllBlogs(req, res) {
     try{
         const blogs = await blogModel.find();
-        console.log(req.user._id);
         res.render("home", {blogs, user : req.user}); //shows all blogs
     }
     catch(err) {
-        console.error("Error fetching blogs:", err);
         res.status(500).send("Error fetching blogs");//server errors
     }
 }
 
 // create my blog
 async function handleCreateNewBlog (req, res){
-    console.log(req.body);
     await blogModel.create({
         title : req.body.title,
         content: req.body.content,

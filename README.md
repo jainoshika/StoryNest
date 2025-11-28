@@ -26,8 +26,6 @@ Whether you're journaling ideas, publishing short stories, sharing tutorials, or
 ✔️ Like, comment, and bookmark posts  
 ✔️ Search and filter by tags, authors, or trending topics  
 ✔️ Responsive and mobile-friendly UI  
-✔️ Rich-text formatting with images, embeds, and markdown support   
-✔️ Personalized reading feed based on interests  
 
 ---
 
@@ -39,24 +37,22 @@ To make StoryNest truly stand out:
 - Title + tag suggestions  
 - Tone and clarity refinement  
 - Content summary generation  
-- Non-intrusive grammar improvements while retaining author style  
+- Subtle grammar improvements without breaking writing style  
 
-### 🎭 Creator Identity & Insights  
-- Writing streaks & progress tracking  
-- Audience analytics (read time, return readers, engagement heatmaps)  
-- Mood-based writing prompts  
+### 📝 Advanced Publishing Experience  
+- Rich-text formatting with images, embeds, and markdown support  
+- Autosave, draft history, and version control  
 
-### 📚 Personalized Reading Experience  
-- Multiple reading themes:  
+### ⭐ Personalized Reading Feed  
+- Feed recommendations based on reading interest, mood, or writing categories  
+
+### 📚 Enhanced Reading Mode  
+- Themes for immersive reading:
   - **Focus Mode**
   - **Newspaper Vintage**
   - **Dark Forest**
-  - **Sepia Notebook**  
-- Adjustable font size, spacing & **dyslexia-friendly reading mode**
-
-### 🧵 Story Series & Micro-Posts  
-- Convert long content into episodic story arcs  
-- Post short ideas (“whispers”) to followers, like a thought journal  
+  - **Sepia Notebook**
+- Adjustable font size and spacing
 
 ---
 
